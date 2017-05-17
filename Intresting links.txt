@@ -9,3 +9,7 @@ https://aieeduau-my.sharepoint.com/personal/samc_aie_edu_au/_layouts/15/WopiFram
 
 Sequence Diagrams
 https://aieeduau-my.sharepoint.com/personal/samc_aie_edu_au/_layouts/15/WopiFrame.aspx?docid=0bd7547bcbc544f3c9836b586c3f9617e&authkey=AUMWrvGAaRSB0wF0_qe8wvw&action=view
+
+game state managmeant
+https://aie.instructure.com/courses/39/pages/game-state-management
+
