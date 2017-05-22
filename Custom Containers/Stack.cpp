@@ -10,7 +10,3 @@ Stack::~Stack()
 {
 }
 
-int Stack::Tester()
-{
-    return 10;
-}
