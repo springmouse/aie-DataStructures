@@ -5,6 +5,18 @@
 void main()
 {
 
-    std::cout << "Hellow world!";
+    List<int> test = List<int>();
+
+    
+    while (true)
+    {
+        for (int i = 0; i < 1000000; i++)
+        {
+            test.PushBack(rand());
+        }
+
+        test.DeleteAll();
+    }
+
 
 }
