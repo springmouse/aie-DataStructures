@@ -44,6 +44,14 @@ void main()
 
     for (int i = 0; i < test.GetLength(); i++)
     {
-        test.GetElemeantAt(i) = i;
+        std::cout << test.GetElemeantAt(i) << "\n";
+    }
+
+    test.InsertAtPosition(1, 123);
+    std::cout << "\n\n\n";
+
+    for (int i = 0; i < test.GetLength(); i++)
+    {
+        std::cout << test.GetElemeantAt(i) << "\n";
     }
 }
