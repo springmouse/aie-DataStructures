@@ -54,4 +54,18 @@ void main()
     {
         std::cout << test.GetElemeantAt(i) << "\n";
     }
+
+    test.InsertAtPosition(2, 9001);
+    std::cout << "\n\n\n";
+
+    List<int>::ListIterator it;
+
+    for (auto & i : test)
+    {
+        std::cout << i << "\n";
+    }
+
+     std::cout << "\n\n\n";
+
+
 }

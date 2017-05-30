@@ -233,25 +233,65 @@ public:
     class ListIterator
     {
     public:
-        ListIterator();
-        ~ListIterator();
+        ListIterator() {};
 
-        ListNode * iteraitor;
+        ListIterator(const ListIterator & other) { iterator = other.iterator; };
+
+        ~ListIterator() {};
+
+        ListNode * iterator;
+
+        T & operator * () {return iterator->obj;};
+        
+        void operator++() { iterator = iterator->next; };
+        
+        void operator++(int) { iterator = iterator->next; };
+
+        void operator--() { iterator = iterator->previous; };
+
+        void operator--(int) { iterator = iterator->previous; };
+
+        void operator += (const int & P)
+        {
+            for (int i = 0; i < P; i++)
+            {
+                iterator = iterator->next;
+            }
+        };
+
+        ListIterator & operator = (const ListIterator & other) { iterator = other.iterator; return *this; };
+
+        bool operator == (const ListIterator & other)
+        {
+            if (iterator == other.iterator)
+            {
+                return true
+            }
+            else
+            {
+                return false;
+            }
+        };
+
+        bool operator != (const ListIterator & other) 
+        {
+            if (iterator != other.iterator)
+            { 
+                return true; 
+            }
+            else
+            {
+                return false;
+            }
+        };
+
     private:
 
     };
 
-#pragma region ListIteratorFunctions
-    ListIterator::ListIterator()
-    {
+    ListIterator begin() { ListIterator it; it.iterator = m_first; return it; };
 
-    }
-
-    ListIterator::~ListIterator()
-    {
-
-    }
-#pragma endregion
+    ListIterator end() { ListIterator it; it.iterator = nullptr; return it; };
 };
 
 #pragma region ListFunctions
@@ -275,9 +315,8 @@ public:
     template<class T>
     List<T>::~List()
     {
-    DeleteAll();
-    delete m_first;
-    delete m_last;
+        DeleteAll();
+        delete m_first;
     }
 
     template<class T>
@@ -298,6 +337,10 @@ public:
         //if m_first is == to a nullptr we have looped through the list
         if (m_first == nullptr)
         {
+            m_first = nullptr;
+            m_last = nullptr;
+
+
             //make sure they are dead!!!
             delete m_first;
             delete m_last;
@@ -435,54 +478,45 @@ public:
     template<class T>
     void List<T>::InsertAtPosition(int P, T value)
     {
-    //checks that the value passed in is with in bounds
-    if (P > m_listCount || P < 0)
-    {
-        throw;
-    }
-
-    //if the position is zero we can cheat and use push front
-    if (P == 0)
-    {
-        PushFront(value);
-        return;
-    }
-
-    //the position is equal to the list size we can cheat and use pushback
-    if (P == m_listCount)
-    {
-        PushBack(value);
-        return;
-    }
-
-    //loops through the list trying to find the pposition, 
-    //once it has found the position we insert a new node there and link it up to
-    //its naughbours and make sure its naughbours are now pointing at it
-    ListNode * holder = m_first;
-    for (int i = 0; i <= P; i++)
-    {
-        if (i == P)
+        //checks that the value passed in is with in bounds
+        if (P > m_listCount || P < 0)
         {
-            ListNode * NN = new ListNode();
-            NN->next = holder->next;
-            NN->previous = holder;
-            NN->obj = value;
+            throw;
+        }
 
-            ListNode * HolderTwo = holder->next;
-            HolderTwo->previous = NN;
-
-            holder->next = NN;
-
-            m_listCount++;
-
+        //if the position is zero we can cheat and use push front
+        if (P == 0)
+        {
+            PushFront(value);
             return;
         }
-        else
-        {
-            holder = holder->next;
-        }
-    }
 
+        //the position is equal to the list size we can cheat and use pushback
+        if (P == m_listCount)
+        {
+            PushBack(value);
+            return;
+        }
+
+
+        //uses the iterator
+        List<T>::ListIterator it = begin();
+
+        it += P;
+
+        ListNode * holder = it.iterator;
+
+        ListNode * NN = new ListNode();
+        NN->next = holder->next;
+        NN->previous = holder;
+        NN->obj = value;
+
+        ListNode * HolderTwo = holder->next;
+        HolderTwo->previous = NN;
+
+        holder->next = NN;
+
+        m_listCount++;
     }
 
     template<class T>
@@ -496,7 +530,7 @@ public:
         DeleteAll();
         return;
     }
-    else
+    else if(m_listCount == 1 && node->obj != value)
     {
         return;
     }
@@ -575,7 +609,7 @@ public:
         DeleteAll();
         return;
     }
-    else
+    else if (m_listCount == 1 && node->obj != value)
     {
         return;
     }
@@ -650,39 +684,33 @@ public:
     template<class T>
     T & List<T>::First()
     {
-    return m_first->obj;
+        return m_first->obj;
     }
 
     template<class T>
     T & List<T>::Last()
     {
-    return m_last->obj;
+        return m_last->obj;
     }
 
     template<class T>
     T & List<T>::GetElemeantAt(const int & P)
     {
-    //loops through the list looking for the position in the list
-    //once it dose we return the value held at that node as a refrence
-    if (P <= m_listCount && P >= 0)
-    {
-        ListNode * holder = m_first;
-        for (int i = 0; i <= P; i++)
+
+        if (P > m_listCount || P < 0)
         {
-            if (i == P)
-            {
-                return holder->obj;
-            }
-            else
-            {
-                holder = holder->next;
-            }
+            throw;
         }
-    }
-    else
-    {
-        throw;
-    }
+
+
+
+
+        List<T>::ListIterator it = begin();
+
+        it += P;
+
+        return *it;
+            
     }
 
     template<class T>
