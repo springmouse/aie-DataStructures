@@ -1,71 +1,16 @@
 #include <iostream>
-#include <Stack.h>
-#include <List.h>
+#include "UnitTester.h"
 
-void main()
+int main()
 {
-
-    List<int> test = List<int>();
-
-    test.PushBack(11);
-    test.PushBack(9);
-    test.PushBack(5);
-    test.PushBack(4);
-    test.PushBack(6);
-
-    test.PopBack();
-    test.PopFront();
-
-    test.Remove(4);
-    test.Remove(9);
-
-    test.PushFront(100);
-    test.PushFront(111);
-    test.PushFront(112);
-    test.PushFront(123);
-
-    test.Remove(112);
-
-    test.PushBack(10);
-    test.PushBack(10);
-
-    test.PushFront(10);
-    test.PushFront(10);
-
-    test.RemoveAll(10);
-
-    int & testlingz = test.First();
-
-    testlingz = 777;
-
-    int & blargh = test.GetElemeantAt(2);
-
-    blargh = 66;
-
-    for (int i = 0; i < test.GetLength(); i++)
+    
+    if (RunUnitTester() == false)
     {
-        std::cout << test.GetElemeantAt(i) << "\n";
+        std::cout << "Unit test failed!" << std::endl;
+        return -1;
     }
 
-    test.InsertAtPosition(1, 123);
-    std::cout << "\n\n\n";
+    std::cout << "All tests passed successfully." << std::endl;
 
-    for (int i = 0; i < test.GetLength(); i++)
-    {
-        std::cout << test.GetElemeantAt(i) << "\n";
-    }
-
-    test.InsertAtPosition(2, 9001);
-    std::cout << "\n\n\n";
-
-    List<int>::ListIterator it;
-
-    for (auto & i : test)
-    {
-        std::cout << i << "\n";
-    }
-
-     std::cout << "\n\n\n";
-
-
+    return 0;
 }

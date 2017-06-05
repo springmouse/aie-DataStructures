@@ -1,4 +1,5 @@
 #pragma once
+#include <assert.h>
 
 /*
 * Class: List
@@ -289,8 +290,30 @@ public:
 
     };
 
+    /*
+    * Function: begin
+    * ---------------
+    *
+    * this returns a ListIterator elemeant that points to the first node in the list.
+    * this is used to iterate through the list by returning the starting position
+    *
+    * Parameters: has no pareameters
+    *
+    * returns: a ListIterator pointing to the first elemeant in the list
+    */
     ListIterator begin() { ListIterator it; it.iterator = m_first; return it; };
 
+    /*
+    * Function: end
+    * -------------
+    *
+    * this returns a ListIterator elemeant that points to a nullptr.
+    * this is used to iterate through the list by allowing the programe to know what the end of the list should look like
+    *
+    * Parameters: has no parameters
+    *
+    * returns: a ListIterator pointing to a nullptr to show what the end of the list looks like
+    */
     ListIterator end() { ListIterator it; it.iterator = nullptr; return it; };
 };
 
@@ -299,17 +322,17 @@ public:
     template<class T>
     List<T>::List()
     {
-    m_first = new ListNode();
-    m_last = new ListNode();
+        m_first = new ListNode();
+        m_last = new ListNode();
 
-    m_first->previous = nullptr;
-    m_first->next = nullptr;
+        m_first->previous = nullptr;
+        m_first->next = nullptr;
 
-    m_last = m_first;
+        m_last = m_first;
 
-    m_listCount = 0;
+        m_listCount = 0;
 
-    DeleteAll();
+        DeleteAll();
     }
 
     template<class T>
@@ -322,45 +345,39 @@ public:
     template<class T>
     void List<T>::DeleteAll()
     {
-
-    //loops through every thing so we can delete it going throught the start node
-    while (true && m_listCount > 0)
-    {
-        ListNode * holder;
-
-        holder = m_first->next;
-
-        delete m_first;
-
-        m_first = holder;
-
-        //if m_first is == to a nullptr we have looped through the list
-        if (m_first == nullptr)
+        //loops through every thing so we can delete it going throught the start node
+        while (true && m_listCount > 0)
         {
-            m_first = nullptr;
-            m_last = nullptr;
+            ListNode * holder;
 
+            holder = m_first->next;
 
-            //make sure they are dead!!!
             delete m_first;
-            delete m_last;
 
-            //set them back up pointing to new nodes
-            m_first = new ListNode();
-            m_last = new ListNode();
+            m_first = holder;
 
-            //make sure they are pointing to nothing as the list is empty
-            m_first->previous = nullptr;
-            m_first->next = nullptr;
+            //if m_first is == to a nullptr we have looped through the list
+            if (m_first == nullptr)
+            {
+                m_last = m_first;
+                //make sure they are dead!!!
+                delete m_first;
 
-            m_last = m_first;
+                //set them back up pointing to new nodes
+                m_first = new ListNode();
 
-            //set size to zero
-            m_listCount = 0;
+                //make sure they are pointing to nothing as the list is empty
+                m_first->previous = nullptr;
+                m_first->next = nullptr;
 
-            return;
+                m_last = m_first;
+
+                //set size to zero
+                m_listCount = 0;
+
+                return;
+            }
         }
-    }
     }
 
     template<class T>
@@ -507,14 +524,16 @@ public:
         ListNode * holder = it.iterator;
 
         ListNode * NN = new ListNode();
-        NN->next = holder->next;
-        NN->previous = holder;
+        NN->next = holder;
+        NN->previous = holder->previous;
         NN->obj = value;
 
-        ListNode * HolderTwo = holder->next;
-        HolderTwo->previous = NN;
 
-        holder->next = NN;
+
+        ListNode * HolderTwo = holder->previous;
+        HolderTwo->next = NN;
+
+        holder->previous = NN;
 
         m_listCount++;
     }
@@ -522,162 +541,162 @@ public:
     template<class T>
     void List<T>::Remove(const T & value)
     {
-    ListNode * node = m_first;
+        ListNode * node = m_first;
     
-    //if the list is a size of one and its value is the one we are looking for delete everything and return else return
-    if (m_listCount == 1 && node->obj == value)
-    {
-        DeleteAll();
-        return;
-    }
-    else if(m_listCount == 1 && node->obj != value)
-    {
-        return;
-    }
-
-    //this loops through the list looking for the afirst that holds the value we are looking for
-    //once we find the value we need to check wich side has a nullptr if a side has a nullptr if one dose have a nullptr we use the other side
-    //then we remove the node and update where the nodes are pointing 
-    while (true && m_listCount > 1)
-    {
-        if (node->obj == value)
+        //if the list is a size of one and its value is the one we are looking for delete everything and return else return
+        if (m_listCount == 1 && node->obj == value)
         {
-            ListNode * holder;
-
-            if (node->next != nullptr)
-            {
-                holder = node->next;
-
-                holder->previous = node->previous;
-
-                delete node;
-
-                if (holder->previous != nullptr)
-                {
-                    ListNode * nodeHolder = holder->previous;
-                    nodeHolder->next = holder;
-                }
-                else
-                {
-                    m_first = holder;
-                }
-
-                m_listCount--;
-                return;
-
-            }
-            else if (node->previous != nullptr)
-            {
-                holder = node->previous;
-
-                holder->next = node->next;
-
-                delete node;
-
-                if (holder->next != nullptr)
-                {
-                    ListNode * nodeHolder = holder->next;
-                    nodeHolder->previous = holder;
-                }
-                else
-                {
-                    m_last = holder;
-                }
-
-                m_listCount--;
-                return;
-
-            }
+            DeleteAll();
+            return;
         }
-        else if (node->next == nullptr)
+        else if(m_listCount == 1 && node->obj != value)
         {
             return;
         }
 
-        node = node->next;
-    }
+        //this loops through the list looking for the afirst that holds the value we are looking for
+        //once we find the value we need to check wich side has a nullptr if a side has a nullptr if one dose have a nullptr we use the other side
+        //then we remove the node and update where the nodes are pointing 
+        while (true && m_listCount > 1)
+        {
+            if (node->obj == value)
+            {
+                ListNode * holder;
+
+                if (node->next != nullptr)
+                {
+                    holder = node->next;
+
+                    holder->previous = node->previous;
+
+                    delete node;
+
+                    if (holder->previous != nullptr)
+                    {
+                        ListNode * nodeHolder = holder->previous;
+                        nodeHolder->next = holder;
+                    }
+                    else
+                    {
+                        m_first = holder;
+                    }
+
+                    m_listCount--;
+                    return;
+
+                }
+                else if (node->previous != nullptr)
+                {
+                    holder = node->previous;
+
+                    holder->next = node->next;
+
+                    delete node;
+
+                    if (holder->next != nullptr)
+                    {
+                        ListNode * nodeHolder = holder->next;
+                        nodeHolder->previous = holder;
+                    }
+                    else
+                    {
+                        m_last = holder;
+                    }
+
+                    m_listCount--;
+                    return;
+
+                }
+            }
+            else if (node->next == nullptr)
+            {
+                return;
+            }
+
+            node = node->next;
+        }
         
     }
 
     template<class T>
     void List<T>::RemoveAll(const T & value)
     {
-    ListNode * node = m_first;
-    //if the list is a size of one and its value is the one we are looking for delete everything and return else return
-    if (m_listCount == 1 && node->obj == value)
-    {
-        DeleteAll();
-        return;
-    }
-    else if (m_listCount == 1 && node->obj != value)
-    {
-        return;
-    }
-    
-    //this loops through the list looking for the all nodes that holds the value we are looking for
-    //once we find the value we need to check wich side if a side has a nullptr if one dose even have a nullptr and use the other side
-    //then we remove the node and update where the nodes are pointing and continue looping looking for the next one
-    while (true && m_listCount > 1)
-    {
-        if (node->obj == value && node != nullptr)
+        ListNode * node = m_first;
+        //if the list is a size of one and its value is the one we are looking for delete everything and return else return
+        if (m_listCount == 1 && node->obj == value)
         {
-            ListNode * holder;
-
-            if (node->next != nullptr)
-            {
-                holder = node->next;
-
-                holder->previous = node->previous;
-
-                delete node;
-
-                if (holder->previous != nullptr)
-                {
-                    ListNode * nodeHolder = holder->previous;
-                    nodeHolder->next = holder;
-                }
-                else
-                {
-                    m_first = holder;
-                }
-
-                m_listCount--;
-                node = holder;
-
-            }
-            else if (node->previous != nullptr)
-            {
-                holder = node->previous;
-
-                holder->next = node->next;
-
-                delete node;
-
-                if (holder->next != nullptr)
-                {
-                    ListNode * nodeHolder = holder->next;
-                    nodeHolder->previous = holder;
-                }
-                else
-                {
-                    m_last = holder;
-                }
-
-                m_listCount--;
-                node = holder;
-
-            }
+            DeleteAll();
+            return;
         }
-        else if (node->next == nullptr)
+        else if (m_listCount == 1 && node->obj != value)
         {
             return;
         }
-        else
+    
+        //this loops through the list looking for the all nodes that holds the value we are looking for
+        //once we find the value we need to check wich side if a side has a nullptr if one dose even have a nullptr and use the other side
+        //then we remove the node and update where the nodes are pointing and continue looping looking for the next one
+        while (true && m_listCount > 1)
         {
-            node = node->next;
-        }
+            if (node->obj == value && node != nullptr)
+            {
+                ListNode * holder;
 
-    }
+                if (node->next != nullptr)
+                {
+                    holder = node->next;
+
+                    holder->previous = node->previous;
+
+                    delete node;
+
+                    if (holder->previous != nullptr)
+                    {
+                        ListNode * nodeHolder = holder->previous;
+                        nodeHolder->next = holder;
+                    }
+                    else
+                    {
+                        m_first = holder;
+                    }
+
+                    m_listCount--;
+                    node = holder;
+
+                }
+                else if (node->previous != nullptr)
+                {
+                    holder = node->previous;
+
+                    holder->next = node->next;
+
+                    delete node;
+
+                    if (holder->next != nullptr)
+                    {
+                        ListNode * nodeHolder = holder->next;
+                        nodeHolder->previous = holder;
+                    }
+                    else
+                    {
+                        m_last = holder;
+                    }
+
+                    m_listCount--;
+                    node = holder;
+
+                }
+            }
+            else if (node->next == nullptr)
+            {
+                return;
+            }
+            else
+            {
+                node = node->next;
+            }
+
+        }
 
     }
 
