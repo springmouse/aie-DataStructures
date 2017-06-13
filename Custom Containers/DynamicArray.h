@@ -33,12 +33,12 @@ inline DynamicArray<T>::DynamicArray()
 template<class T>
 inline DynamicArray<T>::DynamicArray(const int _size)
 {
-    size = _size;
+    /*size = _size;
     usedElements = 0;
 
     T * newArr[_size];
 
-    arr = newArr;
+    arr = newArr;*/
 }
 
 template<class T>
