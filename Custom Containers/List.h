@@ -231,6 +231,10 @@ public:
     */
     void InsertAtPosition(int P, T value);
 
+    void Resize(unsigned int setSize);
+
+    bool Empty();
+
     class ListIterator
     {
     public:
@@ -536,6 +540,32 @@ public:
         holder->previous = NN;
 
         m_listCount++;
+    }
+
+    template<class T>
+    inline void List<T>::Resize(unsigned int setSize)
+    {
+        DeleteAll();
+
+        for (unsigned int i = 0; i < setSize; i++)
+        {
+            PushFront(nullptr);
+        }
+
+
+    }
+
+    template<class T>
+    inline bool List<T>::Empty()
+    {
+        if (m_listCount <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     template<class T>

@@ -111,6 +111,7 @@
     <ClInclude Include="Factory.h" />
     <ClInclude Include="GameStateManagmeant.h" />
     <ClInclude Include="GameStates.h" />
+    <ClInclude Include="Global Type.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="PlayerUnit.h" />
     <ClInclude Include="Spawner.h" />

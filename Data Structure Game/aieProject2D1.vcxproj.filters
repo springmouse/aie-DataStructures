@@ -74,14 +74,17 @@
     <ClInclude Include="ObjectPool.h">
       <Filter>Source Files\UnitCreation</Filter>
     </ClInclude>
-    <ClInclude Include="GameStates.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="aieProject2D1App.h">
       <Filter>Source Files\GameManagmeant</Filter>
     </ClInclude>
     <ClInclude Include="GameStateManagmeant.h">
       <Filter>Source Files\GameManagmeant</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStates.h">
+      <Filter>Source Files\GameManagmeant</Filter>
+    </ClInclude>
+    <ClInclude Include="Global Type.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
