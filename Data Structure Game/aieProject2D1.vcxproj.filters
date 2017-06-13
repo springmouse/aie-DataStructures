@@ -13,18 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Units">
+      <UniqueIdentifier>{a7ad5105-569f-4ef5-a921-9d932237214f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UnitCreation">
+      <UniqueIdentifier>{eb07185c-9b41-4c4c-a6d3-48c1026691b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManagmeant">
+      <UniqueIdentifier>{5b6e4565-75ec-4fc7-8816-be717cc355e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aieProject2D1App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerUnit.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicEnemyUnit.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Source Files\UnitCreation</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectPool.cpp">
+      <Filter>Source Files\UnitCreation</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Source Files\UnitCreation</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStates.cpp">
+      <Filter>Source Files\GameManagmeant</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateManagmeant.cpp">
+      <Filter>Source Files\GameManagmeant</Filter>
+    </ClCompile>
+    <ClCompile Include="aieProject2D1App.cpp">
+      <Filter>Source Files\GameManagmeant</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="aieProject2D1App.h">
+    <ClInclude Include="Unit.h">
+      <Filter>Source Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerUnit.h">
+      <Filter>Source Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicEnemyUnit.h">
+      <Filter>Source Files\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Source Files\UnitCreation</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Source Files\UnitCreation</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>Source Files\UnitCreation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStates.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aieProject2D1App.h">
+      <Filter>Source Files\GameManagmeant</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateManagmeant.h">
+      <Filter>Source Files\GameManagmeant</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

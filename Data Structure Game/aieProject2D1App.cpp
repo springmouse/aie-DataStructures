@@ -31,8 +31,10 @@ void aieProject2D1App::update(float deltaTime) {
 	aie::Input* input = aie::Input::getInstance();
 
 	// exit the application
-	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
-		quit();
+    if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
+    {
+        quit();
+    }
 }
 
 void aieProject2D1App::draw() {
