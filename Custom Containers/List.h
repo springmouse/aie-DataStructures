@@ -231,8 +231,16 @@ public:
     */
     void InsertAtPosition(int P, T value);
 
-    void Resize(unsigned int setSize);
-
+    /*
+    * Function: Empty
+    * ---------------
+    *
+    * this bool returns true if the list has a size of zero
+    *
+    * Parameters: it has no parameters
+    *
+    * returns: returns a true boolean if list is empty
+    */
     bool Empty();
 
     class ListIterator
@@ -375,129 +383,129 @@ public:
     template<class T>
     void List<T>::PushFront(const T & value)
     {
-    //if size of list is zero we dont need to do anything fancy
-    if (m_listCount == 0)
-    {
-        ListNode * NN = new ListNode();
+        //if size of list is zero we dont need to do anything fancy
+        if (m_listCount == 0)
+        {
+            ListNode * NN = new ListNode();
 
-        NN->previous = nullptr;
-        NN->next = nullptr;
+            NN->previous = nullptr;
+            NN->next = nullptr;
 
-        NN->obj = value;
+            NN->obj = value;
 
-        m_last = NN;
-        m_first = m_last;
-    }
-    else
-    {
-        //creat a new node that we will be shoving into the list
-        ListNode * NN = new ListNode();
+            m_last = NN;
+            m_first = m_last;
+        }
+        else
+        {
+            //creat a new node that we will be shoving into the list
+            ListNode * NN = new ListNode();
 
-        //set it up as the first node
-        NN->previous = nullptr;
-        NN->next = m_first;
+            //set it up as the first node
+            NN->previous = nullptr;
+            NN->next = m_first;
 
-        //relink the original first node to be pointing at the new node
-        m_first->previous = NN;
+            //relink the original first node to be pointing at the new node
+            m_first->previous = NN;
 
-        //have the pointer for the first node now point to the new node
-        m_first = NN;
+            //have the pointer for the first node now point to the new node
+            m_first = NN;
 
-        //set the new nodes value
-        m_first->obj = value;
-    }
+            //set the new nodes value
+            m_first->obj = value;
+        }
 
-    //increase list size by one
-    m_listCount++;
+        //increase list size by one
+        m_listCount++;
     }
 
     template<class T>
     void List<T>::PushBack(const T & value)
     {
-    //if size of list is zero we dont need to do anything fancy
-    if (m_listCount == 0)
-    {
-        ListNode * NN = new ListNode();
+        //if size of list is zero we dont need to do anything fancy
+        if (m_listCount == 0)
+        {
+            ListNode * NN = new ListNode();
         
-        NN->previous = nullptr;
-        NN->next = nullptr;
+            NN->previous = nullptr;
+            NN->next = nullptr;
 
-        NN->obj = value;
+            NN->obj = value;
 
-        m_last = NN;
-        m_first = m_last;
-    }
-    else
-    {
-        //creat a new node that we will be shoving into the list
-        ListNode * NN = new ListNode();
+            m_last = NN;
+            m_first = m_last;
+        }
+        else
+        {
+            //creat a new node that we will be shoving into the list
+            ListNode * NN = new ListNode();
 
-        //set it up as the last node
-        NN->previous = m_last;
-        NN->next = nullptr;
+            //set it up as the last node
+            NN->previous = m_last;
+            NN->next = nullptr;
 
-        //relink the original last node to be pointing at the new node
-        m_last->next = NN;
+            //relink the original last node to be pointing at the new node
+            m_last->next = NN;
 
-        //have the pointer for the last node now point to the new node
-        m_last = NN;
+            //have the pointer for the last node now point to the new node
+            m_last = NN;
 
-        //set the new nodes value
-        m_last->obj = value;
-    }
+            //set the new nodes value
+            m_last->obj = value;
+        }
 
-    //increase list size by one
-    m_listCount++;
+        //increase list size by one
+        m_listCount++;
     }
 
     template<class T>
     void List<T>::PopBack()
     {
-    //since list is only one elemeant we cheat and delete everything
-    if (m_listCount == 1)
-    {
-        DeleteAll();
-        return;
-    }
+        //since list is only one elemeant we cheat and delete everything
+        if (m_listCount == 1)
+        {
+            DeleteAll();
+            return;
+        }
 
-    //removes the node and sets up the previous node node as the new last node
-    if (m_listCount > 0)
-    {
-        ListNode * holder = m_last->previous;
+        //removes the node and sets up the previous node node as the new last node
+        if (m_listCount > 0)
+        {
+            ListNode * holder = m_last->previous;
 
-        delete m_last;
+            delete m_last;
 
-        holder->next = nullptr;
+            holder->next = nullptr;
 
-        m_last = holder;
+            m_last = holder;
 
-        m_listCount--;
-    }
+            m_listCount--;
+        }
     }
 
     template<class T>
     void List<T>::PopFront()
     {
-    //again list size is one we are lazy and ceat and just call delet all
-    if (m_listCount == 1)
-    {
-        DeleteAll();
-        return;
-    }
+        //again list size is one we are lazy and ceat and just call delet all
+        if (m_listCount == 1)
+        {
+            DeleteAll();
+            return;
+        }
 
-    //removes the fron node and sets its next to be the new front node
-    if (m_listCount > 0)
-    {
-        ListNode * holder = m_first->next;
+        //removes the fron node and sets its next to be the new front node
+        if (m_listCount > 0)
+        {
+            ListNode * holder = m_first->next;
 
-        delete m_first;
+            delete m_first;
 
-        holder->previous = nullptr;
+            holder->previous = nullptr;
 
-        m_first = holder;
+            m_first = holder;
 
-        m_listCount--;
-    }
+            m_listCount--;
+        }
     }
 
     template<class T>
@@ -545,20 +553,7 @@ public:
 
         m_listCount++;
     }
-
-    template<class T>
-    inline void List<T>::Resize(unsigned int setSize)
-    {
-        DeleteAll();
-
-        for (unsigned int i = 0; i < setSize; i++)
-        {
-            PushFront(nullptr);
-        }
-
-
-    }
-
+    
     template<class T>
     inline bool List<T>::Empty()
     {
@@ -755,13 +750,12 @@ public:
             throw;
         }
 
-
-
-
+        //finds the position in the list given and returns it
         List<T>::ListIterator it = begin();
 
         it += P;
 
+        //returns the elemeant found at the asked location
         return *it;
             
     }
@@ -769,7 +763,7 @@ public:
     template<class T>
     int List<T>::GetLength()
     {
-    return m_listCount;
+        return m_listCount;
     }
 
 #pragma endregion

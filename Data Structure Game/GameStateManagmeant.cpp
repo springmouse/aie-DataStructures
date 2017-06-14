@@ -2,7 +2,7 @@
 #include "Factory.h"
 
 
-GameStateManagmeant::GameStateManagmeant(unsigned int stateCount)
+GameStateManagmeant::GameStateManagmeant()
 {
 }
 
