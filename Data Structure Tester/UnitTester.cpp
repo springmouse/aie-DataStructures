@@ -6,6 +6,8 @@
 
 
 List<int> test = List<int>();
+List<int *> pTester = List<int *>();
+
 DynamicArray<int> arrayTest = DynamicArray<int>(100);
 
 bool TestListEle(const char * mes, int elePos, int checkAgainst)
@@ -43,6 +45,7 @@ bool TestRemoveFunction();
 bool RemoveAllFunction();
 bool GetElemeantAndChangeFunctions();
 bool InsertAtFunction();
+bool CheckPopFunctionsPointer();
 
 bool ListTester()
 {
@@ -68,6 +71,11 @@ bool ListTester()
     }
     
     if (InsertAtFunction() == false)
+    {
+        return false;
+    }
+
+    if (CheckPopFunctionsPointer() == false)
     {
         return false;
     }
@@ -219,6 +227,28 @@ bool InsertAtFunction()
     TESTLIST("InsertAt Function", 7, 123);
 
     return true;
+}
+
+bool CheckPopFunctionsPointer()
+{
+    int * one = new int(1);
+    int * two = new int(2);
+    int * three = new int(3);
+    int * four = new int(4);
+
+
+    pTester.PushBack(one);
+    pTester.PushBack(two);
+    pTester.PushBack(three);
+    pTester.PushBack(four);
+
+    if (pTester.GetLength() != 4)
+    {
+        std::cout << "List Remove Functions failed \n" << "The List is the wrong Size!!! \n";
+        return false;
+    }
+
+
 }
 
 #pragma endregion

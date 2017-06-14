@@ -16,7 +16,11 @@ public:
 
     virtual  ~GameStateManagmeant();
 
-    void registerState(int id, GameStatePointer state);
+    void registerState(int id, GameStates * state)
+    {
+        m_registeredStates.PushBack(state);
+    }
+
     void pushState(int id);
     void popState();
 
@@ -30,15 +34,17 @@ public:
         }
     }
 
-    GameStatePointer GetTopState() { return m_stateStack.Last(); };
-    int ActiveStateCount() { return m_stateStack.GetLength(); };
-    GameStatePointer GetState(int id) { return m_registeredStates.GetElemeantAt(id); };
+    GameStates * GetTopState() { return m_stateStack.Last(); };
+    
+    int ActiveStateCount() { return (m_stateStack.GetLength() + m_pushedStates.GetLength()); };
+
+    GameStates * GetState(int id) { return m_registeredStates.GetElemeantAt(id); };
 
 protected:
-    List<GameStatePointer> m_pushedStates;
+    List<GameStates *> m_pushedStates;
     bool m_popState = false;
 
-    List<GameStatePointer> m_stateStack;
-    List<GameStatePointer> m_registeredStates;
+    List<GameStates *> m_stateStack;
+    List<GameStates *> m_registeredStates;
 };
 

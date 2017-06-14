@@ -20,17 +20,23 @@ Factory * Factory::GetInstanceOfFactory()
     return &factory;
 }
 
-GameStatePointer Factory::MakeState(GameStateType type)
+GameStates * Factory::MakeState(GameStateType type)
 {
+    GameStates * p = nullptr;
+
     switch (type)
     {
     case GameStateType::MENU:
-        return GameStatePointer(new MenuState);
+        p = new MenuState;
+        break;
 
     case GameStateType::INGAME:
-        return GameStatePointer(new InGameState);
+        p = new InGameState;
+        break;
 
     default:
         return nullptr;
     }
+
+    return p;
 }

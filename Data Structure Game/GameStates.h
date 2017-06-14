@@ -1,6 +1,7 @@
 #pragma once
 #include "Font.h"
 #include "Renderer2D.h"
+#include "Input.h"
 #include <string>
 
 
@@ -28,10 +29,10 @@ public:
     virtual void onDraw(aie::Renderer2D*, aie::Font*) = 0;
 
 protected:
+
     virtual void onEnter() {};
     virtual void onExit() {};
 
-private:
     bool m_active = false;
 };
 

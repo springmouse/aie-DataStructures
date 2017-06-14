@@ -20,7 +20,7 @@ public:
     */
     static Factory * GetInstanceOfFactory();
 
-    GameStatePointer MakeState(GameStateType type);
+    GameStates * MakeState(GameStateType type);
 
 private:
     /*

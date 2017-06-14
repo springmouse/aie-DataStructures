@@ -49,10 +49,12 @@ void aieProject2D1App::update(float deltaTime) {
         quit();
     }
 
-    while (m_gameSM.ActiveStateCount() > 0)
+    if (input->isKeyDown(aie::INPUT_KEY_G))
     {
-        m_gameSM.Update(deltaTime);
+        m_gameSM.pushState((int)eGameState::INGAME);
     }
+
+    m_gameSM.Update(deltaTime);
 }
 
 void aieProject2D1App::draw() {
@@ -68,10 +70,7 @@ void aieProject2D1App::draw() {
 	// output some text, uses the last used colour
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
 
-    while (m_gameSM.ActiveStateCount() > 0)
-    {
-        m_gameSM.draw(m_2dRenderer, m_font);
-    }
+    m_gameSM.draw(m_2dRenderer, m_font);
 
 	// done drawing sprites
 	m_2dRenderer->end();

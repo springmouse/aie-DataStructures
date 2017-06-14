@@ -33,8 +33,10 @@ void MenuState::onUpdate(float deltaTime)
 
 void MenuState::onDraw(aie::Renderer2D * m_2dRenderer, aie::Font* font)
 {
-
-    m_2dRenderer->drawText(font, "Press g to play", 500, 360);
+    if (m_active)
+    {
+        m_2dRenderer->drawText(font, "Press g to play", 500, 360);
+    }
 }
 
 #pragma endregion

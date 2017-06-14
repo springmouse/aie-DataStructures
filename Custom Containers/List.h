@@ -48,7 +48,7 @@ private:
         */
         ~ListNode()
         {
-            previous = next = nullptr;
+            //previous = next = nullptr;
         };
 
         ListNode * next; /*points the the next list node in the list or null if it is at the end of the list*/
@@ -326,17 +326,10 @@ public:
     template<class T>
     List<T>::List()
     {
-        m_first = new ListNode();
-        m_last = new ListNode();
-
-        m_first->previous = nullptr;
-        m_first->next = nullptr;
-
-        m_last = m_first;
+        m_first = nullptr;
+        m_last = nullptr;
 
         m_listCount = 0;
-
-        DeleteAll();
     }
 
     template<class T>
@@ -367,12 +360,7 @@ public:
                 //make sure they are dead!!!
                 delete m_first;
 
-                //set them back up pointing to new nodes
-                m_first = new ListNode();
-
-                //make sure they are pointing to nothing as the list is empty
-                m_first->previous = nullptr;
-                m_first->next = nullptr;
+                m_first = nullptr;
 
                 m_last = m_first;
 
@@ -390,7 +378,15 @@ public:
     //if size of list is zero we dont need to do anything fancy
     if (m_listCount == 0)
     {
-        m_first->obj = value;
+        ListNode * NN = new ListNode();
+
+        NN->previous = nullptr;
+        NN->next = nullptr;
+
+        NN->obj = value;
+
+        m_last = NN;
+        m_first = m_last;
     }
     else
     {
@@ -421,7 +417,15 @@ public:
     //if size of list is zero we dont need to do anything fancy
     if (m_listCount == 0)
     {
-        m_last->obj = value;
+        ListNode * NN = new ListNode();
+        
+        NN->previous = nullptr;
+        NN->next = nullptr;
+
+        NN->obj = value;
+
+        m_last = NN;
+        m_first = m_last;
     }
     else
     {

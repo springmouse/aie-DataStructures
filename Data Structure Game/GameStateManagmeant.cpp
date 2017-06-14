@@ -1,22 +1,15 @@
 #include "GameStateManagmeant.h"
-
+#include "Factory.h"
 
 
 GameStateManagmeant::GameStateManagmeant(unsigned int stateCount)
 {
-    m_registeredStates.Resize(stateCount);
-
 }
 
 
 GameStateManagmeant::~GameStateManagmeant()
 {
     m_registeredStates.DeleteAll();
-}
-
-void GameStateManagmeant::registerState(int id, GameStatePointer state)
-{
-    m_registeredStates.InsertAtPosition(id, state);
 }
 
 void GameStateManagmeant::pushState(int id)
