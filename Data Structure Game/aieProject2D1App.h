@@ -1,9 +1,9 @@
 #pragma once
-
 #include "Application.h"
 #include "Renderer2D.h"
 #include "GameStateManagmeant.h"
 #include "Factory.h"
+#include "Information.h"
 
 enum class eGameState
 {
@@ -25,6 +25,8 @@ public:
 	virtual void draw();
 
 protected:
+
+    float timer = 0;
 
     GameStateManagmeant  m_gameSM;
 

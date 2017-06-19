@@ -99,6 +99,7 @@
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="GameStateManagmeant.cpp" />
     <ClCompile Include="GameStates.cpp" />
+    <ClCompile Include="Information.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="PlayerUnit.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="GameStateManagmeant.h" />
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="Global Type.h" />
+    <ClInclude Include="Information.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="PlayerUnit.h" />
     <ClInclude Include="Spawner.h" />

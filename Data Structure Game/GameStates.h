@@ -2,13 +2,15 @@
 #include "Font.h"
 #include "Renderer2D.h"
 #include "Input.h"
+#include "Information.h"
 #include <string>
 
 
 enum GameStateType
 {
     MENU,
-    INGAME
+    INGAME,
+    TEST
 };
 
 class GameStates
@@ -47,6 +49,8 @@ public:
 
     void onUpdate(float deltaTime);
     void onDraw(aie::Renderer2D*, aie::Font*);
+
+    void onPopped();
 
 private:
 

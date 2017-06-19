@@ -1,6 +1,8 @@
 #pragma once
 #include "GameStates.h"
+#include "Unit.h"
 #include "Global Type.h"
+#include <assert.h>
 
 #define FACTORY Factory::GetInstanceOfFactory() /*lets us call and use the factory*/
 
@@ -21,6 +23,8 @@ public:
     static Factory * GetInstanceOfFactory();
 
     GameStates * MakeState(GameStateType type);
+
+    Unit * MakeUnit(eUnitTypes type);
 
 private:
     /*

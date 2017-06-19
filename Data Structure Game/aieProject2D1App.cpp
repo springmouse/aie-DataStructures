@@ -17,10 +17,8 @@ bool aieProject2D1App::startup() {
 	m_2dRenderer = new aie::Renderer2D();
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 
-    m_gameSM = GameStateManagmeant(2);
-
-    m_gameSM.registerState((int)eGameState::MENU,  FACTORY->MakeState(GameStateType::MENU));
-    m_gameSM.registerState((int)eGameState::INGAME, FACTORY->MakeState(GameStateType::INGAME));
+    m_gameSM.registerState(FACTORY->MakeState(GameStateType::MENU));
+    m_gameSM.registerState(FACTORY->MakeState(GameStateType::INGAME));
 
     m_gameSM.pushState((int)eGameState::MENU);
 
@@ -36,25 +34,17 @@ void aieProject2D1App::shutdown() {
 void aieProject2D1App::update(float deltaTime) {
 
 	// input example
-	aie::Input* input = aie::Input::getInstance();
+	aie::Input * input = aie::Input::getInstance();
 
-	// exit the application
-    if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
-    {
-        quit();
-    }
-
-    if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
-    {
-        quit();
-    }
-
-    if (input->isKeyDown(aie::INPUT_KEY_G))
-    {
-        m_gameSM.pushState((int)eGameState::INGAME);
-    }
+    timer += deltaTime;
 
     m_gameSM.Update(deltaTime);
+
+    // exit the application
+    if (input->isKeyDown(aie::INPUT_KEY_ESCAPE) || INFOMATION->quit)
+    {
+        quit();
+    }
 }
 
 void aieProject2D1App::draw() {
@@ -66,9 +56,6 @@ void aieProject2D1App::draw() {
 	m_2dRenderer->begin();
 
 	// draw your stuff here!
-	
-	// output some text, uses the last used colour
-	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
 
     m_gameSM.draw(m_2dRenderer, m_font);
 

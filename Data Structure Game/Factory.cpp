@@ -1,4 +1,6 @@
 #include "Factory.h"
+#include "PlayerUnit.h"
+#include "BasicEnemyUnit.h"
 
 
 
@@ -17,7 +19,7 @@ Factory * Factory::GetInstanceOfFactory()
 {
     static Factory factory;
 
-    return &factory;
+    return & factory;
 }
 
 GameStates * Factory::MakeState(GameStateType type)
@@ -35,8 +37,32 @@ GameStates * Factory::MakeState(GameStateType type)
         break;
 
     default:
-        return nullptr;
+        assert(false && "Factory was passed an invalid Game State type to try and create or type does not yet exist in factory.");
+        break;
     }
+
+    return p;
+}
+
+Unit * Factory::MakeUnit(eUnitTypes type)
+{
+    Unit * p = nullptr;
+
+    switch (type)
+    {
+    case PLAYER:
+        p = new PlayerUnit;
+        break;
+
+    case BASICENEMY:
+        p = new BasicEnemyUnit;
+        break;
+
+    default:
+        assert(false && "Factory was passed an invalid Unit type to try and create or type does not yet exist in factory.");
+        break;
+    }
+
 
     return p;
 }

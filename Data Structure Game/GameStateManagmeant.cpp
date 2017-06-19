@@ -24,13 +24,20 @@ void GameStateManagmeant::popState()
 
 void GameStateManagmeant::Update(float deltaTime)
 {
-    while (m_popState)
+    if (INFOMATION->push)
     {
-        m_popState = false;
+        INFOMATION->push = false;
+        pushState(INFOMATION->pushID);
+    }
+
+    while (INFOMATION->pop)
+    {
+        INFOMATION->pop = false;
 
         m_stateStack.Last()->exit();
         auto temp = m_stateStack.Last();
         m_stateStack.PopBack();
+
         temp->onPopped();
 
         if (m_stateStack.Empty() == false)
@@ -57,5 +64,5 @@ void GameStateManagmeant::Update(float deltaTime)
     {
         state->onUpdate(deltaTime);
     }
-
+    
 }
