@@ -1,7 +1,19 @@
-﻿  GameStates.cpp
+﻿  aieProject2D1App.cpp
+  BasicEnemyUnit.cpp
+  Factory.cpp
+  GameStateManagmeant.cpp
+  GameStates.cpp
+  main.cpp
+  PlayerUnit.cpp
+  Unit.cpp
   Generating code
-  1 of 1885 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  7 of 1926 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    11 functions had inline decision re-evaluated but remain unchanged
+    13 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
+MathsLibary.lib(Matrix3.obj) : warning LNK4099: PDB 'MathsLibary.pdb' was not found with 'MathsLibary.lib(Matrix3.obj)' or at 'C:\Users\s171669\Documents\GitHub\aie-DataStructures\temp\Data Structure Game\Release\MathsLibary.pdb'; linking object as if no debug info
+MathsLibary.lib(Vector3.obj) : warning LNK4099: PDB 'MathsLibary.pdb' was not found with 'MathsLibary.lib(Vector3.obj)' or at 'C:\Users\s171669\Documents\GitHub\aie-DataStructures\temp\Data Structure Game\Release\MathsLibary.pdb'; linking object as if no debug info
+MathsLibary.lib(Vector2.obj) : warning LNK4099: PDB 'MathsLibary.pdb' was not found with 'MathsLibary.lib(Vector2.obj)' or at 'C:\Users\s171669\Documents\GitHub\aie-DataStructures\temp\Data Structure Game\Release\MathsLibary.pdb'; linking object as if no debug info
+MathsLibary.lib(Matrix2.obj) : warning LNK4099: PDB 'MathsLibary.pdb' was not found with 'MathsLibary.lib(Matrix2.obj)' or at 'C:\Users\s171669\Documents\GitHub\aie-DataStructures\temp\Data Structure Game\Release\MathsLibary.pdb'; linking object as if no debug info
+MathsLibary.lib(Vector4.obj) : warning LNK4099: PDB 'MathsLibary.pdb' was not found with 'MathsLibary.lib(Vector4.obj)' or at 'C:\Users\s171669\Documents\GitHub\aie-DataStructures\temp\Data Structure Game\Release\MathsLibary.pdb'; linking object as if no debug info
   aieProject2D1.vcxproj -> C:\Users\s171669\Documents\GitHub\aie-DataStructures\temp\Data Structure Game\Release\Data Structure Game.exe

@@ -7,5 +7,7 @@ class PlayerUnit :
 public:
     PlayerUnit();
     ~PlayerUnit();
+
+    void Update(float deltaTime);
 };
 

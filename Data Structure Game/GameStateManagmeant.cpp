@@ -1,4 +1,5 @@
 #include "GameStateManagmeant.h"
+#include "Information.h"
 #include "Factory.h"
 
 

@@ -1,9 +1,9 @@
 #pragma once
 #include "Font.h"
 #include "Renderer2D.h"
-#include "Input.h"
-#include "Information.h"
-#include <string>
+#include "Unit.h"
+#include <Vector3.h>
+#include <List.h>
 
 
 enum GameStateType
@@ -53,7 +53,6 @@ public:
     void onPopped();
 
 private:
-
 };
 
 
@@ -70,4 +69,7 @@ public:
 
 private:
     float timer = 0;
+
+    List<Unit *> m_playerUnits;
+
 };

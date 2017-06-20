@@ -1,4 +1,8 @@
 #include "GameStates.h"
+#include "Factory.h"
+#include "Input.h"
+#include "Information.h"
+#include <string>
 
 
 #pragma region GameStates
@@ -64,6 +68,7 @@ void MenuState::onPopped()
 
 InGameState::InGameState()
 {
+    m_playerUnits.PushFront(FACTORY->MakeUnit(eUnitTypes::PLAYER));
 }
 
 InGameState::~InGameState()
@@ -72,12 +77,20 @@ InGameState::~InGameState()
 
 void InGameState::onUpdate(float deltaTime)
 {
-
-    timer += deltaTime;
-
-    if (INPUT->isKeyDown(aie::INPUT_KEY_ESCAPE))
+    if (m_active)
     {
-        INFOMATION->pop = true;
+        timer += deltaTime;
+
+        if (INPUT->isKeyDown(aie::INPUT_KEY_ESCAPE))
+        {
+            INFOMATION->pop = true;
+        }
+
+
+        for (auto p : m_playerUnits)
+        {
+            p->Update(deltaTime);
+        }
     }
 }
 
@@ -89,6 +102,12 @@ void InGameState::onDraw(aie::Renderer2D * m_2dRenderer, aie::Font* font)
         m_2dRenderer->drawText(font, name.c_str(), 500, 360);
 
         m_2dRenderer->drawText(font, "press esc to go back to main menu", 0, 10);
+
+        for (auto p : m_playerUnits)
+        {
+            m_2dRenderer->setRenderColour(0, 1, 1, 1);
+            m_2dRenderer->drawCircle( p->m_globalPos[2].x, p->m_globalPos[2].y, 10);
+        }
     }
 }
 
