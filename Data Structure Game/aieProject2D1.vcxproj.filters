@@ -13,14 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Units">
-      <UniqueIdentifier>{a7ad5105-569f-4ef5-a921-9d932237214f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\UnitCreation">
       <UniqueIdentifier>{eb07185c-9b41-4c4c-a6d3-48c1026691b6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\GameManagmeant">
       <UniqueIdentifier>{5b6e4565-75ec-4fc7-8816-be717cc355e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Units/entites">
+      <UniqueIdentifier>{a7ad5105-569f-4ef5-a921-9d932237214f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,13 +28,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayerUnit.cpp">
-      <Filter>Source Files\Units</Filter>
+      <Filter>Source Files\Units/entites</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
-      <Filter>Source Files\Units</Filter>
+      <Filter>Source Files\Units/entites</Filter>
     </ClCompile>
     <ClCompile Include="BasicEnemyUnit.cpp">
-      <Filter>Source Files\Units</Filter>
+      <Filter>Source Files\Units/entites</Filter>
     </ClCompile>
     <ClCompile Include="Spawner.cpp">
       <Filter>Source Files\UnitCreation</Filter>
@@ -57,16 +57,19 @@
     <ClCompile Include="Information.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Unit.h">
-      <Filter>Source Files\Units</Filter>
+      <Filter>Source Files\Units/entites</Filter>
     </ClInclude>
     <ClInclude Include="PlayerUnit.h">
-      <Filter>Source Files\Units</Filter>
+      <Filter>Source Files\Units/entites</Filter>
     </ClInclude>
     <ClInclude Include="BasicEnemyUnit.h">
-      <Filter>Source Files\Units</Filter>
+      <Filter>Source Files\Units/entites</Filter>
     </ClInclude>
     <ClInclude Include="Factory.h">
       <Filter>Source Files\UnitCreation</Filter>
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="Information.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

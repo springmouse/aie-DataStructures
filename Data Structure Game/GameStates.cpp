@@ -75,6 +75,10 @@ void InGameState::onUpdate(float deltaTime)
 
     timer += deltaTime;
 
+    if (INPUT->isKeyDown(aie::INPUT_KEY_ESCAPE))
+    {
+        INFOMATION->pop = true;
+    }
 }
 
 void InGameState::onDraw(aie::Renderer2D * m_2dRenderer, aie::Font* font)
@@ -83,6 +87,8 @@ void InGameState::onDraw(aie::Renderer2D * m_2dRenderer, aie::Font* font)
     {
         std::string name = "Time since started running " + std::to_string(timer);
         m_2dRenderer->drawText(font, name.c_str(), 500, 360);
+
+        m_2dRenderer->drawText(font, "press esc to go back to main menu", 0, 10);
     }
 }
 

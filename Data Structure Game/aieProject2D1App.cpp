@@ -41,7 +41,7 @@ void aieProject2D1App::update(float deltaTime) {
     m_gameSM.Update(deltaTime);
 
     // exit the application
-    if (input->isKeyDown(aie::INPUT_KEY_ESCAPE) || INFOMATION->quit)
+    if (INFOMATION->quit)
     {
         quit();
     }
