@@ -2,10 +2,11 @@
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
+#include <iostream>
+
 
 aieProject2D1App::aieProject2D1App() 
 {
-
 }
 
 aieProject2D1App::~aieProject2D1App() {
