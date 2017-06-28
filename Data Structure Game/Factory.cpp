@@ -1,6 +1,7 @@
 #include "Factory.h"
 #include "PlayerUnit.h"
 #include "BasicEnemyUnit.h"
+#include "Bullet.h"
 
 
 
@@ -22,17 +23,18 @@ Factory * Factory::GetInstanceOfFactory()
     return & factory;
 }
 
-GameStates * Factory::MakeState(GameStateType type)
+//this makes a new GameState to pass out
+GameStates * Factory::MakeState(eGameStateType type)
 {
     GameStates * p = nullptr;
 
     switch (type)
     {
-    case GameStateType::MENU:
+    case eGameStateType::MENU:
         p = new MenuState;
         break;
 
-    case GameStateType::INGAME:
+    case eGameStateType::INGAME:
         p = new InGameState;
         break;
 
@@ -44,6 +46,7 @@ GameStates * Factory::MakeState(GameStateType type)
     return p;
 }
 
+//creates a new unit to pass out
 Unit * Factory::MakeUnit(eUnitTypes type)
 {
     Unit * p = nullptr;
@@ -57,6 +60,10 @@ Unit * Factory::MakeUnit(eUnitTypes type)
     case BASICENEMY:
         p = new BasicEnemyUnit;
         break;
+
+	case BULLET:
+		p = new Bullet;
+		break;
 
     default:
         assert(false && "Factory was passed an invalid Unit type to try and create or type does not yet exist in factory.");

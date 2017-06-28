@@ -198,6 +198,18 @@ public:
     */
     float GetZ();
 
+	/*
+	* Function: GetTranslation
+	* ------------------------
+	*
+	* this gets the vector holding the translation of the matrix
+	*
+	* Parameters: this takes in no parameters
+	*
+	* returns: a vector2 from matrix pos[2]
+	*/
+	Vector2 GetTranslation();
+
     /*
     * Function: GetRotationEuler
     * --------------------------

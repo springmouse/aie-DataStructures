@@ -96,7 +96,7 @@
   <ItemGroup>
     <ClCompile Include="aieProject2D1App.cpp" />
     <ClCompile Include="BasicEnemyUnit.cpp" />
-    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="GameStateManagmeant.cpp" />
     <ClCompile Include="GameStates.cpp" />
@@ -104,21 +104,18 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="PlayerUnit.cpp" />
-    <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aieProject2D1App.h" />
     <ClInclude Include="BasicEnemyUnit.h" />
-    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="GameStateManagmeant.h" />
     <ClInclude Include="GameStates.h" />
-    <ClInclude Include="Global Type.h" />
     <ClInclude Include="Information.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="PlayerUnit.h" />
-    <ClInclude Include="Spawner.h" />
     <ClInclude Include="Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -185,6 +185,11 @@ float Matrix3::GetZ()
     return float(atan2(this->vec[1].x, this->vec[1].y));
 }
 
+Vector2 Matrix3::GetTranslation()
+{
+	return this->vec[2];
+}
+
 //gets all the rotation values stored in a vector3
 Vector3 Matrix3::GetRotationEuler()
 {

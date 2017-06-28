@@ -1,12 +1,18 @@
 #pragma once
 #include "GameStates.h"
 #include "Unit.h"
-#include "Global Type.h"
 #include <assert.h>
 
 #define FACTORY Factory::GetInstanceOfFactory() /*lets us call and use the factory*/
 
-
+/*
+* class: Factory
+* ----------------
+*
+* this class is our main gameObject in this programe
+*
+* Aurthor: Callum Dunstone, AIE
+*/
 class Factory
 {
 public:
@@ -22,8 +28,28 @@ public:
     */
     static Factory * GetInstanceOfFactory();
 
-    GameStates * MakeState(GameStateType type);
+	/*
+	* Function: MakeState
+	* -------------------
+	*
+	* this creates a state based on the enum passed in and passes it out as a GameState pointer
+	*
+	* Parameters: this takes a eGameStateType so we know what type of GameState to pass out
+	*
+	* returns: a pointer to a new gamestate
+	*/
+    GameStates * MakeState(eGameStateType type);
 
+	/*
+	* Function: MakeUnit
+	* ------------------
+	*
+	* this creates a Unit based on the enum passed in and passes it out as a Unit pointer
+	*
+	* Parameters: this takes a eUnitTypes so we know what type of Unit to pass out
+	*
+	* returns: a pointer to a new Unit
+	*/
     Unit * MakeUnit(eUnitTypes type);
 
 private:

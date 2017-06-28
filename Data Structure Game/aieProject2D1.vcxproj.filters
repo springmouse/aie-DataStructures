@@ -36,9 +36,6 @@
     <ClCompile Include="BasicEnemyUnit.cpp">
       <Filter>Source Files\Units/entites</Filter>
     </ClCompile>
-    <ClCompile Include="Spawner.cpp">
-      <Filter>Source Files\UnitCreation</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectPool.cpp">
       <Filter>Source Files\UnitCreation</Filter>
     </ClCompile>
@@ -57,8 +54,8 @@
     <ClCompile Include="Information.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\Units/entites</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +71,6 @@
     <ClInclude Include="Factory.h">
       <Filter>Source Files\UnitCreation</Filter>
     </ClInclude>
-    <ClInclude Include="Spawner.h">
-      <Filter>Source Files\UnitCreation</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectPool.h">
       <Filter>Source Files\UnitCreation</Filter>
     </ClInclude>
@@ -89,14 +83,11 @@
     <ClInclude Include="GameStates.h">
       <Filter>Source Files\GameManagmeant</Filter>
     </ClInclude>
-    <ClInclude Include="Global Type.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Information.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Bullet.h">
+      <Filter>Source Files\Units/entites</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
